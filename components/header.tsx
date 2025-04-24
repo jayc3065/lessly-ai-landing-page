@@ -25,8 +25,11 @@ export default function Header() {
           <Link href="#features" className="text-sm font-medium hover:text-teal-600 transition-colors">
             Features
           </Link>
-          <Link href="#comparison" className="text-sm font-medium hover:text-teal-600 transition-colors">
-            Comparison
+          <Link href="#analytics-features" className="text-sm font-medium hover:text-teal-600 transition-colors">
+            Analytics
+          </Link>
+          <Link href="#dashboard" className="text-sm font-medium hover:text-teal-600 transition-colors">
+            Dashboard
           </Link>
           <Link href="#pricing" className="text-sm font-medium hover:text-teal-600 transition-colors">
             Pricing
@@ -68,11 +71,18 @@ export default function Header() {
               Features
             </Link>
             <Link
-              href="#comparison"
+              href="#analytics-features"
               className="text-sm font-medium p-2 hover:bg-gray-100 rounded"
               onClick={() => setIsMenuOpen(false)}
             >
-              Comparison
+              Analytics
+            </Link>
+            <Link
+              href="#dashboard"
+              className="text-sm font-medium p-2 hover:bg-gray-100 rounded"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              Dashboard
             </Link>
             <Link
               href="#pricing"

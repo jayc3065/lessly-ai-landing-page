@@ -1,7 +1,6 @@
 "use client"
 
 import { Button } from "@/components/ui/button"
-import Image from "next/image"
 import { useEffect, useState } from "react"
 import { motion } from "framer-motion"
 import VideoModal from "./video-modal"
@@ -104,23 +103,156 @@ export default function Hero() {
           >
             <div className="absolute inset-0 bg-gradient-to-r from-teal-100 to-blue-100 rounded-2xl transform rotate-1 scale-105 opacity-50"></div>
             <div className="relative rounded-2xl overflow-hidden border shadow-xl">
-              <div className="absolute top-0 left-0 right-0 h-12 bg-gray-800 flex items-center px-4">
-                <div className="flex space-x-2">
-                  <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
+              <div className="pt-0">
+                <div className="relative w-full h-[600px]">
+                  {/* Purple gradient background */}
+                  <div className="absolute inset-0 bg-gradient-to-br from-purple-600 to-purple-900 rounded-md overflow-hidden">
+                    {/* Abstract design elements */}
+                    <div className="absolute top-0 right-0 w-64 h-64 bg-purple-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob"></div>
+                    <div className="absolute bottom-0 left-0 w-72 h-72 bg-indigo-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-2000"></div>
+                    <div className="absolute top-1/2 left-1/4 w-56 h-56 bg-violet-400 rounded-full mix-blend-multiply filter blur-xl opacity-70 animate-blob animation-delay-4000"></div>
+
+                    {/* Subtle grid pattern */}
+                    <div
+                      className="absolute inset-0 opacity-10"
+                      style={{
+                        backgroundImage:
+                          "linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)",
+                        backgroundSize: "20px 20px",
+                      }}
+                    ></div>
+
+                    {/* Product UI */}
+                    <div className="absolute inset-0 flex flex-col items-center justify-center p-8">
+                      {/* Logo and version */}
+                      <div className="mb-8 text-center">
+                        <div className="flex items-center justify-center mb-2">
+                          <div className="h-12 w-12 rounded-full bg-white flex items-center justify-center mr-3">
+                            <div className="h-8 w-8 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600"></div>
+                          </div>
+                          <h2 className="text-4xl font-bold text-white">
+                            Lessly <span className="text-purple-200">2.0</span>
+                          </h2>
+                        </div>
+                        <p className="text-purple-200 text-lg">Advanced AI Review Management</p>
+                      </div>
+
+                      {/* Dashboard preview */}
+                      <div className="w-full max-w-3xl bg-white rounded-lg shadow-2xl overflow-hidden">
+                        <div className="bg-gray-800 text-white p-3 flex items-center">
+                          <div className="flex space-x-2 mr-4">
+                            <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                            <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                            <div className="w-3 h-3 rounded-full bg-green-500"></div>
+                          </div>
+                          <span className="text-sm">Lessly 2.0 Dashboard</span>
+                        </div>
+
+                        <div className="p-4 bg-gray-50">
+                          {/* Dashboard content */}
+                          <div className="flex mb-4">
+                            <div className="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-xs font-medium mr-2">
+                              Overview
+                            </div>
+                            <div className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs font-medium mr-2">
+                              Reviews
+                            </div>
+                            <div className="bg-gray-100 text-gray-800 px-3 py-1 rounded-full text-xs font-medium">
+                              Analytics
+                            </div>
+                          </div>
+
+                          {/* Stats row */}
+                          <div className="grid grid-cols-3 gap-4 mb-4">
+                            {[
+                              { label: "Total Reviews", value: "842", change: "+12%" },
+                              { label: "Average Rating", value: "4.8", change: "+0.2" },
+                              { label: "Response Rate", value: "98%", change: "+5%" },
+                            ].map((stat, i) => (
+                              <div key={i} className="bg-white p-3 rounded-lg border shadow-sm">
+                                <div className="text-xs text-gray-500">{stat.label}</div>
+                                <div className="text-xl font-bold">{stat.value}</div>
+                                <div className="text-xs text-green-600 mt-1">{stat.change} ↑</div>
+                              </div>
+                            ))}
+                          </div>
+
+                          {/* Recent reviews */}
+                          <div className="bg-white rounded-lg border p-3 mb-4">
+                            <div className="flex justify-between items-center mb-2">
+                              <h4 className="text-sm font-medium">Recent Reviews</h4>
+                              <span className="text-xs text-purple-600">View all</span>
+                            </div>
+
+                            <div className="space-y-2">
+                              {[
+                                { name: "Sarah J.", rating: 5, time: "2h ago" },
+                                { name: "Michael C.", rating: 4, time: "5h ago" },
+                              ].map((review, i) => (
+                                <div key={i} className="flex items-center justify-between border-b pb-2">
+                                  <div className="flex items-center">
+                                    <div className="h-6 w-6 rounded-full bg-gray-200 flex items-center justify-center mr-2 text-xs">
+                                      {review.name.charAt(0)}
+                                    </div>
+                                    <span className="text-xs">{review.name}</span>
+                                  </div>
+                                  <div className="flex items-center">
+                                    <div className="flex mr-2">
+                                      {[...Array(5)].map((_, i) => (
+                                        <div
+                                          key={i}
+                                          className={`h-2 w-2 ${i < review.rating ? "bg-yellow-400" : "bg-gray-200"} rounded-full mr-0.5`}
+                                        ></div>
+                                      ))}
+                                    </div>
+                                    <span className="text-xs text-gray-400">{review.time}</span>
+                                  </div>
+                                </div>
+                              ))}
+                            </div>
+                          </div>
+
+                          {/* AI response preview */}
+                          <div className="bg-purple-50 border border-purple-100 rounded-lg p-3">
+                            <div className="flex items-center mb-2">
+                              <div className="h-5 w-5 rounded-full bg-gradient-to-br from-purple-500 to-indigo-600 mr-2"></div>
+                              <span className="text-xs font-medium text-purple-800">AI Response Preview</span>
+                            </div>
+                            <p className="text-xs text-gray-600 bg-white p-2 rounded border">
+                              Thank you for your wonderful feedback, Sarah! We're thrilled to hear you had such a
+                              positive experience with our service. Your kind words mean a lot to our team, and we look
+                              forward to serving you again soon!
+                            </p>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Product badge */}
+                      <div className="absolute top-4 right-4 bg-white/10 backdrop-blur-sm px-3 py-1 rounded-full border border-white/20">
+                        <span className="text-xs font-medium text-white">NEW RELEASE</span>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* Add some CSS animations */}
+                  <style jsx>{`
+                    @keyframes blob {
+                      0% { transform: scale(1); }
+                      33% { transform: scale(1.1) translate(20px, -10px); }
+                      66% { transform: scale(0.9) translate(-20px, 10px); }
+                      100% { transform: scale(1); }
+                    }
+                    .animate-blob {
+                      animation: blob 7s infinite alternate;
+                    }
+                    .animation-delay-2000 {
+                      animation-delay: 2s;
+                    }
+                    .animation-delay-4000 {
+                      animation-delay: 4s;
+                    }
+                  `}</style>
                 </div>
-                <div className="mx-auto text-white text-sm">Lessly AI Dashboard</div>
-              </div>
-              <div className="pt-12">
-                <Image
-                  src="/placeholder.svg?height=600&width=800"
-                  alt="Lessly AI Dashboard"
-                  width={800}
-                  height={600}
-                  className="w-full h-auto object-cover"
-                  priority
-                />
               </div>
 
               {/* Animated notification */}

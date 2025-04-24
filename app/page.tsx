@@ -1,9 +1,11 @@
 import Header from "@/components/header"
 import Hero from "@/components/hero"
 import DemoVideo from "@/components/demo-video"
+import ReviewImportance from "@/components/review-importance"
 import HowItWorks from "@/components/how-it-works"
 import Features from "@/components/features"
-import ReviewImportance from "@/components/review-importance"
+import AnalyticsFeatures from "@/components/analytics-features"
+import DashboardPreview from "@/components/dashboard-preview"
 import DataImpact from "@/components/data-impact"
 import TargetAudience from "@/components/target-audience"
 import Testimonials from "@/components/testimonials"
@@ -22,6 +24,8 @@ export default function Home() {
         <ReviewImportance />
         <HowItWorks />
         <Features />
+        <AnalyticsFeatures />
+        <DashboardPreview />
         <DataImpact />
         <TargetAudience />
         <Testimonials />
