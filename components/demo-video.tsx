@@ -38,18 +38,30 @@ export default function DemoVideo() {
         >
           <div className="absolute inset-0 bg-gradient-to-r from-teal-500/20 to-blue-500/20 z-10"></div>
 
-          {/* Video thumbnail */}
+          {/* Video thumbnail with actual video */}
           <div className="aspect-video bg-gray-900 relative">
-            {/* Replace with actual thumbnail image */}
-            <div className="absolute inset-0 flex items-center justify-center bg-gray-800">
-              <img
-                src="/placeholder.svg?height=720&width=1280&text=Lessly+AI+Demo"
-                alt="Lessly AI Demo Video Thumbnail"
-                className="w-full h-full object-cover opacity-80"
+            <video
+              className="w-full h-full object-cover opacity-80"
+              poster="/placeholder.svg?height=720&width=1280&text=Lessly+AI+Demo"
+              muted
+              loop
+              playsInline
+              onCanPlay={(e) => {
+                // Auto-play the video when it's ready, but muted
+                e.currentTarget.play().catch(() => {
+                  // Fallback if autoplay is blocked
+                  console.log("Autoplay prevented")
+                })
+              }}
+            >
+              <source
+                src="https://static.videezy.com/system/resources/previews/000/021/804/original/typing-laptop-computer-technology-business.mp4"
+                type="video/mp4"
               />
-            </div>
+              Your browser does not support the video tag.
+            </video>
 
-            {/* Play button */}
+            {/* Play button - keep this as is */}
             <button
               onClick={() => setIsVideoModalOpen(true)}
               className="absolute inset-0 flex items-center justify-center z-20 group"
@@ -127,7 +139,7 @@ export default function DemoVideo() {
       <VideoModal
         isOpen={isVideoModalOpen}
         onClose={() => setIsVideoModalOpen(false)}
-        videoUrl="https://www.youtube.com/embed/dQw4w9WgXcQ"
+        videoUrl="https://static.videezy.com/system/resources/previews/000/021/804/original/typing-laptop-computer-technology-business.mp4"
       />
     </section>
   )

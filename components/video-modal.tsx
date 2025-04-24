@@ -13,6 +13,9 @@ interface VideoModalProps {
 export default function VideoModal({ isOpen, onClose, videoUrl }: VideoModalProps) {
   const [isMounted, setIsMounted] = useState(false)
 
+  // Check if the URL is a YouTube URL
+  const isYouTubeUrl = videoUrl.includes("youtube.com") || videoUrl.includes("youtu.be")
+
   useEffect(() => {
     setIsMounted(true)
 
@@ -43,12 +46,18 @@ export default function VideoModal({ isOpen, onClose, videoUrl }: VideoModalProp
         </Button>
 
         <div className="relative pb-[56.25%] h-0">
-          <iframe
-            src={videoUrl}
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowFullScreen
-            className="absolute top-0 left-0 w-full h-full"
-          ></iframe>
+          {isYouTubeUrl ? (
+            <iframe
+              src={videoUrl}
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+              allowFullScreen
+              className="absolute top-0 left-0 w-full h-full"
+            ></iframe>
+          ) : (
+            <video src={videoUrl} controls autoPlay className="absolute top-0 left-0 w-full h-full">
+              Your browser does not support the video tag.
+            </video>
+          )}
         </div>
       </div>
     </div>
