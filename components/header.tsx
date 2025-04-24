@@ -2,11 +2,17 @@
 
 import { useState } from "react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Menu, X } from "lucide-react"
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const pathname = usePathname()
+
+  const isActive = (path: string) => {
+    return pathname === path
+  }
 
   return (
     <header className="sticky top-0 z-50 w-full border-b bg-white/95 backdrop-blur">
@@ -19,22 +25,40 @@ export default function Header() {
         </div>
 
         <nav className="hidden md:flex items-center gap-6">
-          <Link href="#how-it-works" className="text-sm font-medium hover:text-teal-600 transition-colors">
+          <Link
+            href="/#how-it-works"
+            className={`text-sm font-medium hover:text-teal-600 transition-colors ${isActive("/#how-it-works") ? "text-teal-600" : ""}`}
+          >
             How It Works
           </Link>
-          <Link href="#features" className="text-sm font-medium hover:text-teal-600 transition-colors">
+          <Link
+            href="/#features"
+            className={`text-sm font-medium hover:text-teal-600 transition-colors ${isActive("/#features") ? "text-teal-600" : ""}`}
+          >
             Features
           </Link>
-          <Link href="#analytics-features" className="text-sm font-medium hover:text-teal-600 transition-colors">
+          <Link
+            href="/analytics"
+            className={`text-sm font-medium hover:text-teal-600 transition-colors ${isActive("/analytics") ? "text-teal-600" : ""}`}
+          >
             Analytics
           </Link>
-          <Link href="#dashboard" className="text-sm font-medium hover:text-teal-600 transition-colors">
+          <Link
+            href="/dashboard"
+            className={`text-sm font-medium hover:text-teal-600 transition-colors ${isActive("/dashboard") ? "text-teal-600" : ""}`}
+          >
             Dashboard
           </Link>
-          <Link href="#pricing" className="text-sm font-medium hover:text-teal-600 transition-colors">
+          <Link
+            href="/pricing"
+            className={`text-sm font-medium hover:text-teal-600 transition-colors ${isActive("/pricing") ? "text-teal-600" : ""}`}
+          >
             Pricing
           </Link>
-          <Link href="#faq" className="text-sm font-medium hover:text-teal-600 transition-colors">
+          <Link
+            href="/#faq"
+            className={`text-sm font-medium hover:text-teal-600 transition-colors ${isActive("/#faq") ? "text-teal-600" : ""}`}
+          >
             FAQ
           </Link>
           <Button variant="ghost" className="text-sm font-medium">
@@ -57,42 +81,42 @@ export default function Header() {
         <div className="md:hidden absolute top-16 left-0 right-0 bg-white border-b shadow-lg z-50">
           <div className="container flex flex-col space-y-4 p-4">
             <Link
-              href="#how-it-works"
+              href="/#how-it-works"
               className="text-sm font-medium p-2 hover:bg-gray-100 rounded"
               onClick={() => setIsMenuOpen(false)}
             >
               How It Works
             </Link>
             <Link
-              href="#features"
+              href="/#features"
               className="text-sm font-medium p-2 hover:bg-gray-100 rounded"
               onClick={() => setIsMenuOpen(false)}
             >
               Features
             </Link>
             <Link
-              href="#analytics-features"
+              href="/analytics"
               className="text-sm font-medium p-2 hover:bg-gray-100 rounded"
               onClick={() => setIsMenuOpen(false)}
             >
               Analytics
             </Link>
             <Link
-              href="#dashboard"
+              href="/dashboard"
               className="text-sm font-medium p-2 hover:bg-gray-100 rounded"
               onClick={() => setIsMenuOpen(false)}
             >
               Dashboard
             </Link>
             <Link
-              href="#pricing"
+              href="/pricing"
               className="text-sm font-medium p-2 hover:bg-gray-100 rounded"
               onClick={() => setIsMenuOpen(false)}
             >
               Pricing
             </Link>
             <Link
-              href="#faq"
+              href="/#faq"
               className="text-sm font-medium p-2 hover:bg-gray-100 rounded"
               onClick={() => setIsMenuOpen(false)}
             >
