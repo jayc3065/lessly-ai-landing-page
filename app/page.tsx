@@ -3,10 +3,12 @@ import Hero from "@/components/hero"
 import DemoVideo from "@/components/demo-video"
 import ReviewImportance from "@/components/review-importance"
 import HowItWorks from "@/components/how-it-works"
-import Features from "@/components/features"
+import InteractiveFeatures from "@/components/interactive-features"
+import InteractiveDemo from "@/components/interactive-demo"
+import ROICalculator from "@/components/roi-calculator"
 import DataImpact from "@/components/data-impact"
 import TargetAudience from "@/components/target-audience"
-import Testimonials from "@/components/testimonials"
+import TestimonialCarousel from "@/components/testimonial-carousel"
 import ComparisonTable from "@/components/comparison-table"
 import FAQ from "@/components/faq"
 import Footer from "@/components/footer"
@@ -20,10 +22,12 @@ export default function Home() {
         <DemoVideo />
         <ReviewImportance />
         <HowItWorks />
-        <Features />
+        <InteractiveFeatures />
+        <InteractiveDemo />
+        <ROICalculator />
         <DataImpact />
         <TargetAudience />
-        <Testimonials />
+        <TestimonialCarousel />
         <ComparisonTable />
         <FAQ />
       </main>
